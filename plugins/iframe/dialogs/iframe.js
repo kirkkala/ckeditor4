@@ -7,8 +7,6 @@
 	// Map 'true' and 'false' values to match W3C's specifications
 	// http://www.w3.org/TR/REC-html40/present/frames.html#h-16.5
 	var checkboxValues = {
-		scrolling: { 'true': 'yes', 'false': 'no' },
-		frameborder: { 'true': '1', 'false': '0' },
 		tabindex: { 'true': '-1', 'false': false }
 	};
 
@@ -17,7 +15,7 @@
 		if ( iframeNode.hasAttribute( this.id ) ) {
 			var value = iframeNode.getAttribute( this.id );
 			if ( isCheckbox )
-				this.setValue( checkboxValues[ this.id ][ 'true' ] == value.toLowerCase() );
+				this.setValue( checkboxValues[ this.id ][ 'true' ] === value.toLowerCase() );
 			else
 				this.setValue( value );
 		}
@@ -168,26 +166,6 @@
 					} ]
 				},
 				{
-					type: 'hbox',
-					widths: [ '50%', '50%' ],
-					children: [ {
-						id: 'scrolling',
-						type: 'checkbox',
-						requiredContent: 'iframe[scrolling]',
-						label: iframeLang.scrolling,
-						setup: loadValue,
-						commit: commitValue
-					},
-					{
-						id: 'frameborder',
-						type: 'checkbox',
-						requiredContent: 'iframe[frameborder]',
-						label: iframeLang.border,
-						setup: loadValue,
-						commit: commitValue
-					} ]
-				},
-				{
 					id: 'tabindex',
 					type: 'checkbox',
 					requiredContent: 'iframe[tabindex]',
@@ -196,30 +174,10 @@
 					commit: commitValue
 				},
 				{
-					type: 'hbox',
-					widths: [ '50%', '50%' ],
-					children: [ {
-						id: 'name',
-						type: 'text',
-						requiredContent: 'iframe[name]',
-						label: commonLang.name,
-						setup: loadValue,
-						commit: commitValue
-					},
-					{
-						id: 'title',
-						type: 'text',
-						requiredContent: 'iframe[title]',
-						label: commonLang.advisoryTitle,
-						setup: loadValue,
-						commit: commitValue
-					} ]
-				},
-				{
-					id: 'longdesc',
+					id: 'title',
 					type: 'text',
-					requiredContent: 'iframe[longdesc]',
-					label: commonLang.longDescr,
+					requiredContent: 'iframe[title]',
+					label: commonLang.advisoryTitle,
 					setup: loadValue,
 					commit: commitValue
 				} ]
